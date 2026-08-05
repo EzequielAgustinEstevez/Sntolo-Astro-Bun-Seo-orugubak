@@ -1,59 +1,115 @@
 ---
-// Component imports
 import { Layout } from "@globals"
-
-import {SimbolArea} from "@component/SimbolArea"
-import {MusicList} from "@component/MusicList"
+import { SimbolArea } from "@component/SimbolArea"
+import { MusicList } from "@component/MusicList"
+import { DemonsGrid } from "@component/DemonsGrid"
+import { PhotoCollage } from "@component/PhotoCollage"
+import { Credits } from "@component/Credits"
+import { InstagramCta } from "@component/InstagramCta"
+import { social } from "@util/siteData"
 import sntoloLogo from "@img/sntoloLogo.webp"
-
 ---
 
-<Layout title="Sntolo">
+<Layout title="Sntolo — Oráculo mudo">
+	<!-- Hero logo -->
+	<div class="flex items-center justify-center min-h-[30vh] pt-[15vh]">
+		<img
+			src={sntoloLogo}
+			width={320}
+			height={320}
+			class="object-contain max-w-[20rem] w-full h-auto"
+			alt="Logotipo de Sntolo"
+			fetchpriority="high"
+		/>
+	</div>
+	<div class="h-[40vh] md:h-[50vh]" aria-hidden="true"></div>
 
-		<!-- Sntolo Logo-->
-		<div class="flex items-center justify-center min-h-screen ">
-					<img
-						src={sntoloLogo}
-						width={300}
-						height={300}
-						class="object-cover"
-						alt="sntolo-logo"
-					/>
+	<div class="flex flex-col self-center max-w-5xl mx-auto px-4 space-y-10 w-full">
+		<div class="self-center max-w-2xl">
+			<p class="text-center text-[var(--color-primary)]">
+				Los sentimientos, emociones e ideas que inspiraron la composición de cada canción
+				marcaron el camino para la creación de los símbolos que forman parte de la tabla del
+				"oráculo mudo".
+			</p>
 		</div>
 
-		<div
-		class="flex flex-col self-center max-w-5xl space-y-10"
-		>
-			<!-- 1er Parrafo -->
-			<div class="self-center max-w-2xl">
-				<p class="text-base text-center md:text-xl">
-					Los sentimientos, emociones e ideas que inspiraron la composición de cada canción marcaron el camino para la creación de los símbolos que forman parte de la tabla del oráculo mudo.
-				</p>
-			</div>
-		
-			<!--* Simbolos Seba -->
-			<SimbolArea/>
-			
-			<!-- 2do Parrafo -->
-			<div class="self-center max-w-2xl">
-				<p class="text-base text-center md:text-xl">
-					Estos símbolos caligráficos fueron creados por <b>sayt.calligraphy</b>
-				</p>
-			</div>
-			
-			<!-- 3er Parrafo -->
-			<div class="self-center max-w-2xl">
-					<p class="text-base text-center md:text-xl">
-						Lxs antiguxs brujxs dibujaban en sus rituales estos símbolos para invocar a lxs demonixs de la tabla, y asi adornar sus ceremonias con el canto y el baile de estas criaturas del inframundo.
-					</p>
-			</div>
-			
-			<!-- 1er Titulo -->
-			<div class="mt-48 text-center">
-				<h1 class="text-5xl font-bold flex-nowrap">| LA TABLA DEL ORACULO MUDO |</h1>
-			</div>
-			
-			<!--* Reproductor -->
+		<div class="h-12" aria-hidden="true"></div>
+
+		<SimbolArea />
+
+		<div class="h-16" aria-hidden="true"></div>
+
+		<div class="self-center max-w-2xl">
+			<p class="text-center text-[var(--color-primary)]">
+				Estos símbolos caligráficos fueron creados por{" "}
+				<a href={social.sayt} target="_blank" rel="noopener noreferrer">
+					<b>sayt.calligraphy</b>
+				</a>
+			</p>
 		</div>
-		<MusicList/>
+
+		<div class="h-[5vh]" aria-hidden="true"></div>
+
+		<div class="self-center max-w-2xl">
+			<p class="text-center text-[var(--color-primary)]">
+				Lxs antiguxs brujxs dibujaban en sus rituales estos símbolos para invocar a lxs
+				demonixs de la tabla, y asi adornar sus ceremonias con el canto y el baile de estas
+				criaturas del inframundo.
+			</p>
+		</div>
+	</div>
+
+	<div class="h-[15vh]" aria-hidden="true"></div>
+
+	<!-- Oráculo mudo + player -->
+	<section id="oraculo-mudo">
+		<div class="text-center px-4">
+			<h1 class="display-title text-[var(--color-primary)] text-3xl md:text-5xl">
+				| LA TABLA DEL ORACULO MUDO |
+			</h1>
+		</div>
+		<div class="h-[3vh]" aria-hidden="true"></div>
+		<MusicList />
+	</section>
+
+	<div class="h-[14vh]" aria-hidden="true"></div>
+
+	<div class="container mx-auto max-w-2xl px-4 text-center">
+		<p class="text-[var(--color-primary)]">
+			Este oraculo no da respuestas, razón por la cual le llamaron “Oráculo mudo”, tan solo
+			es una puerta que las brujas abren para adornar la maldad
+		</p>
+	</div>
+
+	<div class="h-[15vh]" aria-hidden="true"></div>
+
+	<!-- Demonios -->
+	<div class="text-center px-4">
+		<h1 class="display-title text-[var(--color-primary)] text-3xl md:text-5xl">
+			| LXS DEMONIXS |
+		</h1>
+	</div>
+	<div class="h-[3vh]" aria-hidden="true"></div>
+	<DemonsGrid />
+
+	<div class="h-[15vh]" aria-hidden="true"></div>
+
+	<div class="container mx-auto max-w-2xl px-4 text-center">
+		<p class="text-[var(--color-primary)]">
+			SEFERINA, una deidad de este inframundo, es la responsable de crear cada detalle en los
+			atuendos que visten a los demonios
+		</p>
+	</div>
+
+	<div class="h-[16vh]" aria-hidden="true"></div>
+
+	<PhotoCollage />
+
+	<div class="h-[40vh]" aria-hidden="true"></div>
+
+	<InstagramCta class="mb-5 mt-5" />
+
+	<div class="h-[40vh]" aria-hidden="true"></div>
+
+	<Credits />
 </Layout>

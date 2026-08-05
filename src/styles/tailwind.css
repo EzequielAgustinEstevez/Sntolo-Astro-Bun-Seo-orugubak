@@ -3,34 +3,361 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Augusta";
-  src: url("../../public/fonts/Augusta.woff2") format("woff2");
+	font-family: "Augusta";
+	src: url("/fonts/Augusta.woff2") format("woff2");
+	font-display: swap;
 }
+
 @font-face {
-  font-family: "Cristone";
-  src: url("../../public/fonts/Cristone.woff2") format("woff2");
+	font-family: "Cristone";
+	src: url("/fonts/Cristone.woff2") format("woff2");
+	font-display: swap;
 }
+
 @font-face {
-  font-family: "GrenzeGotisch";
-  src: url("../../public/fonts/GrenzeGotisch-Black.woff2") format("woff2");
-  font-weight: 900;
-  font-style: "normal";
+	font-family: "GrenzeGotisch";
+	src: url("/fonts/GrenzeGotisch-Black.woff2") format("woff2");
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
 }
+
 @font-face {
-  font-family: "GrenzeGotisch";
-  src: url("../../public/fonts/GrenzeGotisch-Bold.woff2") format("woff2");
-  font-weight: "bold";
-  font-style: "bold";
+	font-family: "GrenzeGotisch";
+	src: url("/fonts/GrenzeGotisch-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
 }
+
 @font-face {
-  font-family: "GrenzeGotisch";
-  src: url("../../public/fonts/GrenzeGotisch-Light.woff2") format("woff2");
-  font-weight: "ligth";
-  font-style: "ligth";
+	font-family: "GrenzeGotisch";
+	src: url("/fonts/GrenzeGotisch-Light.woff2") format("woff2");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
 }
+
 @font-face {
-  font-family: "GrenzeGotisch";
-  src: url("../../public/fonts/GrenzeGotisch-Regular.woff2") format("woff2");
-  font-weight: "normal";
-  font-style: "normal";
+	font-family: "GrenzeGotisch";
+	src: url("/fonts/GrenzeGotisch-Regular.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--color-primary: #bc890e;
+	--color-secondary: #ffffff;
+	--color-black: #000000;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background-color: var(--color-black);
+		color: var(--color-primary);
+		font-family: "GrenzeGotisch", serif;
+		font-weight: 400;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+		font-family: "GrenzeGotisch", serif;
+		font-weight: 900;
+	}
+
+	h1.display-title {
+		font-family: "Cristone", sans-serif;
+		font-weight: 400;
+	}
+
+	p {
+		font-size: x-large;
+	}
+
+	@media (max-width: 768px) {
+		p {
+			font-size: unset;
+		}
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	button {
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+	}
+}
+
+@layer components {
+	.logo-content-parent {
+		display: grid;
+		grid-column-gap: 10px;
+		align-items: center;
+		grid-template-columns: auto repeat(6, 1fr) auto;
+	}
+
+	@media screen and (max-width: 768px) {
+		.logo-content-parent {
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: auto auto;
+		}
+
+		.logo-content-parent .separador-logo {
+			display: none;
+		}
+	}
+
+	.photo-parent {
+		display: grid;
+		grid-column-gap: 0;
+		grid-row-gap: 0;
+	}
+
+	.photo-div1 {
+		grid-area: 1 / 1 / 2 / 2;
+		justify-self: right;
+		max-width: 90%;
+	}
+
+	.photo-div2 {
+		grid-area: 1 / 2 / 2 / 3;
+		margin-top: 18%;
+		margin-left: -10%;
+		max-width: 104%;
+	}
+
+	.photo-div3 {
+		grid-area: 2 / 1 / 3 / 2;
+		justify-self: right;
+		margin-right: -4%;
+		margin-top: 20%;
+		z-index: 99;
+	}
+
+	.photo-div4 {
+		grid-area: 2 / 2 / 3 / 3;
+		margin-top: -12%;
+		margin-left: -8%;
+	}
+
+	.photo-div5 {
+		grid-area: 1 / 1 / 2 / 2;
+		justify-self: right;
+		margin-top: 28%;
+	}
+
+	.photo-div6 {
+		grid-area: 1 / 2 / 2 / 3;
+		margin-top: -12%;
+		margin-left: -8%;
+	}
+
+	.photo-center {
+		display: flex;
+		justify-content: center;
+		margin-top: -4%;
+		text-align: center;
+	}
+
+	.image-container {
+		overflow: visible;
+		position: relative;
+	}
+
+	.image-container img {
+		max-width: 100%;
+		height: auto;
+		transform-origin: center center;
+		transition: transform 0.5s, filter 0.5s, opacity 0.5s;
+	}
+
+	.image-container:hover img {
+		transform: scale(1.02);
+		filter: drop-shadow(0 0 8px rgba(255, 255, 255, 1));
+		opacity: 0;
+	}
+
+	.image-container::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		z-index: -1;
+		opacity: 0;
+		transform: scale(1.02);
+		filter: drop-shadow(0 0 8px rgba(255, 255, 255, 1));
+		transition: opacity 0.5s, transform 0.5s;
+	}
+
+	.image-container:hover::after {
+		background-image: var(--gif-url);
+		animation: fadeIn 0.5s ease-in-out 0.3s forwards;
+	}
+
+	.avatar-divisor {
+		max-width: 90%;
+		font-size: x-large;
+	}
+
+	.image-background {
+		background-size: cover;
+		background-position: center;
+		background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+			var(--bg-fonts);
+	}
+
+	.player-bar {
+		position: fixed;
+		width: 100%;
+		bottom: 0;
+		left: 0;
+		background: #000;
+		animation: fadeInAnimation 1s ease-in, shadowAnimation 4s infinite alternate;
+		z-index: 9999;
+	}
+
+	.player-bar[hidden] {
+		display: none !important;
+	}
+
+	.player-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.8rem 3rem 0 3rem;
+		gap: 1rem;
+	}
+
+	.player-img {
+		max-width: 6rem;
+		max-height: 6rem;
+	}
+
+	.close-button {
+		color: var(--color-secondary);
+		cursor: pointer;
+		font-family: fantasy;
+		vertical-align: top;
+		font-size: 1.5rem;
+		line-height: 1;
+	}
+
+	.player-row {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		max-width: 100%;
+		overflow-x: auto;
+		gap: 0;
+	}
+
+	@media (max-width: 1250px) {
+		.player-row {
+			justify-content: flex-start;
+			white-space: nowrap;
+		}
+	}
+
+	.player-column {
+		width: min-content;
+		align-items: center;
+		flex-shrink: 0;
+	}
+
+	.vertical-divisor {
+		position: relative;
+		top: -3vw;
+		max-height: 22rem;
+	}
+
+	.responsive-banner-img {
+		width: 100%;
+		height: auto;
+		max-width: 100vw;
+	}
+
+	.responsive-banner-img img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	.responsive-font {
+		font-size: x-large;
+	}
+
+	@media (max-width: 768px) {
+		.responsive-font {
+			font-size: large;
+		}
+	}
+
+	.site-nav {
+		position: sticky;
+		top: 0;
+		z-index: 1000;
+		background-color: var(--color-black);
+	}
+
+	.site-nav a {
+		letter-spacing: 0.3rem;
+	}
+
+	audio.sntolo-audio {
+		width: 100%;
+		padding: 0.5rem 1rem 1rem;
+		accent-color: var(--color-primary);
+	}
+
+	audio.sntolo-audio::-webkit-media-controls-panel {
+		background-color: #000;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: scale(1.02);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes fadeInAnimation {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes shadowAnimation {
+	0%,
+	100% {
+		box-shadow: 0 0 5rem 0px var(--color-primary);
+	}
+	50% {
+		box-shadow: 0 0 3rem 0px var(--color-primary);
+	}
 }

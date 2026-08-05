@@ -7,11 +7,11 @@ import type { ManifestOptions } from "vite-plugin-pwa"
 export const seoConfig = {
 	baseURL: "https://sntolo.com", // Change this to your production URL.
 	description:
-		"Sitio oficial de la banda Sntolo", // Change this to be your website's description.
+		"Oráculo mudo — música, símbolos y demonios del universo Sntolo.",
 	type: "website",
 	image: {
-		url: "https://sntolo.com/wp-content/uploads/2023/08/sntoloLogo.webp", // Change this to your website's thumbnail.
-		alt: "Sntolo Sitio Oficial", // Change this to your website's thumbnail description.
+		url: "https://sntolo.com/media/2023/08/sntoloLogo.webp",
+		alt: "Sntolo Sitio Oficial",
 		width: 1200,
 		height: 630
 	},
@@ -28,7 +28,7 @@ export const manifest: Partial<ManifestOptions> = {
 	name: "Sntolo", // Change this to your website's name.
 	short_name: "Sntolo", // Change this to your website's short name.
 	description:
-		"Sitio oficial de la banda Sntolo", // Change this to your websites description.
+		"Oráculo mudo — música, símbolos y demonios del universo Sntolo.",
 	theme_color: "#bc890e", // Change this to your primary color.
 	background_color: "#000000", // Change this to your background color.
 	display: "minimal-ui",

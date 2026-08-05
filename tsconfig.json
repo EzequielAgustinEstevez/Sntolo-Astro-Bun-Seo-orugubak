@@ -12,6 +12,7 @@
 			"@component/*": ["src/components/*"],
 			"@style/*": ["src/styles/*"],
 			"@util/*": ["utils/*"],
+			"@util": ["utils"],
 			"@img/*": ["src/assets/img/*"],
 			"@svg/*": ["src/assets/svg/*"],
 			"@icon/*": ["src/assets/svg/icon/*"]

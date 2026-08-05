@@ -1,0 +1,19 @@
+---
+import { social, ui } from "@util/siteData"
+
+export interface Props {
+	class?: string
+}
+
+const { class: className = "" } = Astro.props as Props
+---
+
+<div class:list={["text-center", className]}>
+	<a href={social.seferina} target="_blank" rel="noopener noreferrer">
+		<img
+			src={ui.seferinaLogo}
+			alt="Seferina en Instagram"
+			class="mx-auto max-w-full h-auto"
+		/>
+	</a>
+</div>

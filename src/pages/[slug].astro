@@ -1,0 +1,15 @@
+---
+import { CharacterGallery } from "@component/CharacterGallery"
+import { characters } from "@util/siteData"
+
+export function getStaticPaths() {
+	return characters.map((character) => ({
+		params: { slug: character.slug },
+		props: { character }
+	}))
+}
+
+const { character } = Astro.props
+---
+
+<CharacterGallery character={character} />
