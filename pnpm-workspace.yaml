@@ -1,0 +1,10 @@
+# pnpm project settings (v11+ reads these from here, not .npmrc / package.json#pnpm)
+shamefullyHoist: true
+autoInstallPeers: true
+confirmModulesPurge: false
+
+# Native/install scripts must be explicitly allowed (strictDepBuilds default).
+# Without this, sharp never downloads its platform binary and esbuild stays broken.
+allowBuilds:
+  esbuild: true
+  sharp: true
