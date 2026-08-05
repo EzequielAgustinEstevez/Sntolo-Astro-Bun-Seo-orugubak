@@ -1,0 +1,66 @@
+---
+import { Layout } from "@globals"
+import { InstagramCta } from "@component/InstagramCta"
+import { social, ui } from "@util/siteData"
+import type { Character } from "@util/siteData"
+
+export interface Props {
+	character: Character
+}
+
+const { character } = Astro.props as Props
+---
+
+<Layout
+	title={`${character.name} — Sntolo`}
+	description={`Galería fotográfica de ${character.name}, del universo del Oráculo mudo de Sntolo.`}
+	showNav={true}
+	highlightHome={true}
+>
+	{
+		character.showLogoInsteadOfBanner ? (
+			<div class="text-center py-4">
+				<a href={social.seferina} target="_blank" rel="noopener noreferrer">
+					<img
+						src={ui.seferinaLogo}
+						alt="Seferina"
+						class="mx-auto max-w-full h-auto"
+					/>
+				</a>
+			</div>
+		) : (
+			character.banner && (
+				<div class="responsive-banner-img">
+					<img src={character.banner} alt={`${character.name} — portada`} />
+				</div>
+			)
+		)
+	}
+
+	<div>
+		{
+			character.gallery.map((src, i) => (
+				<div class="responsive-banner-img flex justify-center mb-3 bg-white">
+					<img src={src} alt={`${character.name} ${i + 1}`} class="w-full h-auto" />
+				</div>
+			))
+		}
+	</div>
+
+	<div class="h-[30vh]" aria-hidden="true"></div>
+
+	<InstagramCta />
+
+	<div class="h-[30vh]" aria-hidden="true"></div>
+
+	<div class="container mx-auto max-w-2xl px-4 text-center">
+		<p class="tracking-[0.4vw] text-[var(--color-primary)]">
+			- Vestuario: <b>{character.credits.vestuario}</b> -
+		</p>
+		<p class="tracking-[0.4vw] text-[var(--color-primary)]">
+			- Fotografía: <b>{character.credits.fotografia}</b> -
+		</p>
+	</div>
+
+	<div class="h-[30vh]" aria-hidden="true"></div>
+</Layout>

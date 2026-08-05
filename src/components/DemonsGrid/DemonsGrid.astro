@@ -1,0 +1,39 @@
+---
+import { demons, ui } from "@util/siteData"
+---
+
+<div class="container mx-auto flex justify-center items-center px-4">
+	<div class="flex flex-wrap justify-center w-full max-w-5xl">
+		{
+			demons.map((demon) => (
+				<div class="w-1/2 md:w-1/3 lg:w-1/6 my-2 px-2 text-center flex flex-col justify-center items-center">
+					<div class="image-container" data-gif-url={demon.gif}>
+						<img src={demon.cover} alt={demon.name} />
+					</div>
+					<div class="self-center">
+						<img src={ui.symbolSeparator} alt="" class="avatar-divisor mx-auto" />
+						<p class="mb-0 text-white text-xl">{demon.name}</p>
+						<img src={ui.symbolSeparator} alt="" class="avatar-divisor mx-auto" />
+					</div>
+				</div>
+			))
+		}
+	</div>
+</div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		document.querySelectorAll(".image-container").forEach((container) => {
+			container.addEventListener("mouseover", () => {
+				const el = container as HTMLElement
+				const gifUrl = el.getAttribute("data-gif-url")
+				if (gifUrl) {
+					el.style.setProperty("--gif-url", `url(${gifUrl})`)
+				}
+			})
+			container.addEventListener("mouseout", () => {
+				;(container as HTMLElement).style.removeProperty("--gif-url")
+			})
+		})
+	})
+</script>

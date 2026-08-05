@@ -1,13 +1,14 @@
 {
-	"name": "astro-pwa-starter",
-	"version": "0.0.0",
-	"private": false,
+	"name": "sntolo",
+	"version": "1.0.0",
+	"private": true,
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"media:download": "node scripts/download-media.mjs"
 	},
 	"devDependencies": {
 		"@astrojs/sitemap": "^2.0.2",

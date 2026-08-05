@@ -1,0 +1,28 @@
+---
+import { credits } from "@util/siteData"
+---
+
+<section class="container mx-auto px-4 pb-40">
+	<div class="flex justify-center mb-16">
+		<h1 class="text-[var(--color-primary)] tracking-[1.2rem] text-center">
+			<b>Créditos</b>
+		</h1>
+	</div>
+
+	{
+		credits.map((group) => (
+			<div class="credits-section text-center mb-8">
+				<h2 class="text-center mb-4 tracking-[0.4rem] text-[2.2rem]">
+					<b>{group.title}</b>
+				</h2>
+				<div class="flex flex-wrap justify-center mb-20 gap-4">
+					{group.people.map((person) => (
+						<div class="credits-item px-4 mb-5 min-w-[8rem]">
+							<p class="whitespace-pre-line">{person}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		))
+	}
+</section>

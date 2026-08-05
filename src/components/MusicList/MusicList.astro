@@ -1,227 +1,147 @@
 ---
+import { tracks, ui } from "@util/siteData"
 ---
 
-<div class="relative flex justify-center overflow-hidden -bottom-14" >
-    <img src="https://sntolo.com/wp-content/uploads/2023/08/Sayt-logo.png" alt="imageDivisor" class="max-w-fit" >
+<div class="container mx-auto px-2">
+	<div class="flex justify-center">
+		<img
+			src={ui.oraculoDesktop}
+			class="hidden md:block max-w-full h-auto"
+			alt="Tabla del oráculo mudo"
+		/>
+		<img
+			src={ui.oraculoMobile}
+			class="block md:hidden max-w-full h-auto"
+			alt="Tabla del oráculo mudo"
+		/>
+	</div>
+
+	<div class="player-row py-4">
+		{
+			tracks.map((track, index) => (
+				<>
+					<div class="player-column flex flex-col justify-center pt-1 px-2">
+						<img src={track.image} class="max-h-36 w-auto mx-auto" alt={track.title} />
+						<p class="mb-0 mt-3 whitespace-nowrap text-[var(--color-primary)]">
+							{track.label}
+						</p>
+						<div class="flex items-center justify-center mt-3">
+							<button
+								type="button"
+								class="play-button flex flex-col items-center"
+								data-image={track.image}
+								data-text={track.label}
+								data-audio-src={track.audio}
+								aria-label={`Reproducir ${track.title}`}
+							>
+								<img src={ui.playButton} class="h-auto max-w-full" alt="" />
+								<span class="mt-1 text-[var(--color-primary)] whitespace-nowrap">
+									Reproducir
+								</span>
+							</button>
+							<img
+								src={ui.separator}
+								class="h-auto max-w-full mx-2 max-h-16"
+								alt=""
+							/>
+							<button
+								type="button"
+								class="download-button flex flex-col items-center"
+								data-download-src={track.audio}
+								data-download-text={track.downloadName}
+								aria-label={`Descargar ${track.title}`}
+							>
+								<img src={ui.downloadButton} class="h-auto max-w-full" alt="" />
+								<span class="mt-1 text-[var(--color-primary)] whitespace-nowrap">
+									Descargar
+								</span>
+							</button>
+						</div>
+					</div>
+					{index < tracks.length - 1 && (
+						<div class="flex-shrink-0 flex items-center justify-center px-1">
+							<img
+								src={ui.verticalDivisor}
+								class="vertical-divisor h-auto"
+								alt=""
+							/>
+						</div>
+					)}
+				</>
+			))
+		}
+	</div>
 </div>
 
-<div class="flex-nowrap">
-    <div class="flex items-center justify-start overflow-x-scroll md:justify-center">
-
-        <!-- Column 1 -->
-        <div class="flex flex-col items-center justify-center">
-            <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/1-Pit-el-beat.webp"
-                class="img-fluid max-h-36" alt="">
-            <p class="mt-3 mb-0 text-xl whitespace-no-wrap ">| 1 | Pit, el beat |</p>
-            <div class="flex items-center justify-center mt-3">
-                <div>
-                    <button
-                        class="flex flex-col items-center px-3 py-1 font-normal text-center no-underline align-middle select-none play-button"
-                        data-image="https://sntolo.com/wp-content/uploads/2023/08/1-Pit-el-beat.webp"
-                        data-text="| 1 | Pit, el beat |"
-                        data-audio-src="https://sntolo.com/wp-content/uploads/2023/08/1.Pit-V3.mp3"
-                        style="font-size: initial">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/playButton.webp"
-                            class="h-auto max-w-full" alt="Play Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap" >Reproducir</p>
-                    </button>
-                </div>
-                <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/separator2.webp"
-                    class="h-auto max-w-full mx-2 max-h-20" alt="Separator">
-                <div>
-                    <button style="font-size: initial"
-                        class="flex flex-col items-center px-3 py-1 font-normal leading-normal text-center no-underline whitespace-no-wrap align-middle select-none download-button"
-                        data-download-src="https://sntolo.com/wp-content/uploads/2023/08/1.Pit-V3.mp3"
-                        data-download-text="1-Pit el beat">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/downloadButton.webp"
-                            class="h-auto max-w-full" alt="Download Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap">Descargar</p>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Separador Column 2 -->
-        <div class="min-w-fit">
-            <img src="https://sntolo.com/wp-content/uploads/2023/07/Recurso-17.webp"
-                class="max-h-96" alt="Image2">
-        </div>
-        <!-- Column 3 -->
-        <div class="flex flex-col items-center justify-center">
-            <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/2-Un-todo-complejo.webp"
-                class="img-fluid max-h-36" alt="Image3">
-            <p class="mt-3 mb-0 text-xl whitespace-no-wrap">| 2 | Un todo complejo |</p>
-            <div class="flex items-center justify-center mt-3">
-                <div>
-                    <button
-                        class="flex flex-col items-center px-3 py-1 font-normal leading-normal text-center no-underline whitespace-no-wrap align-middle select-none play-button"
-                        data-image="https://sntolo.com/wp-content/uploads/2023/08/2-Un-todo-complejo.webp"
-                        data-text="| 2 | Un todo complejo |"
-                        data-audio-src="https://sntolo.com/wp-content/uploads/2023/08/2.Un-Todo-V3.mp3"
-                        style="font-size: initial">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/playButton.webp"
-                            class="h-auto max-w-full" alt="Play Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap" >Reproducir</p>
-                    </button>
-                </div>
-                <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/separator2.webp"
-                    class="h-auto max-w-full mx-2 max-h-20" alt="Separator">
-                <div>
-                    <button style="font-size: initial"
-                        class="flex flex-col items-center px-3 py-1 font-normal leading-normal text-center no-underline whitespace-no-wrap align-middle select-none download-button"
-                        data-download-src="https://sntolo.com/wp-content/uploads/2023/08/2.Un-Todo-V3.mp3"
-                        data-download-text="2-Un todo complejo">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/downloadButton.webp"
-                            class="h-auto max-w-full" alt="Download Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap">Descargar</p>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Separador Column 4 -->
-        <div class="min-w-fit">
-            <img src="https://sntolo.com/wp-content/uploads/2023/07/Recurso-17.webp"
-                class="max-h-96" alt="Image2">
-        </div>
-        <!-- Column 5 -->
-        <div class="flex flex-col items-center justify-center">
-            <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/3-Para-estar-conmigo.webp"
-                class="img-fluid max-h-36" alt="Image11">
-            <p class="mt-3 mb-0 text-xl whitespace-no-wrap">| 3 | Para estar conmigo |</p>
-            <div class="flex items-center justify-center mt-3">
-                <div>
-                    <button
-                        class="flex flex-col items-center px-3 py-1 font-normal leading-normal text-center no-underline whitespace-no-wrap align-middle select-none play-button"
-                        data-image="https://sntolo.com/wp-content/uploads/2023/08/3-Para-estar-conmigo.webp"
-                        data-text="| 3 | Para estar conmigo |"
-                        data-audio-src="https://sntolo.com/wp-content/uploads/2023/08/3.Para-Estar-V2.mp3"
-                        style="font-size: initial">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/playButton.webp"
-                            class="h-auto max-w-full" alt="Play Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap" >Reproducir</p>
-                    </button>
-                </div>
-                <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/separator2.webp"
-                    class="h-auto max-w-full mx-2 max-h-20" alt="Separator">
-                <div>
-                    <button style="font-size: initial"
-                        class="flex flex-col items-center px-3 py-1 font-normal leading-normal text-center no-underline whitespace-no-wrap align-middle select-none download-button"
-                        data-download-src="https://sntolo.com/wp-content/uploads/2023/08/3.Para-Estar-V2.mp3"
-                        data-download-text="3-Para estar conmigo">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/downloadButton.webp"
-                            class="h-auto max-w-full" alt="Download Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap">Descargar</p>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Separador Column 6 -->
-        <div class="mt-12 min-w-max">
-            <img src="https://sntolo.com/wp-content/uploads/2023/07/Recurso-17.webp"
-                class="max-w-sm max-h-80" alt="Image2">
-        </div>
-        <!-- Column 7 -->
-        <div class="flex flex-col items-center justify-center">
-            <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/6-Presagios.webp"
-                class="img-fluid max-h-36" alt="Image7">
-            <p class="mt-3 mb-0 text-xl whitespace-no-wrap">| 4 | Presagios |</p>
-            <div class="flex items-center justify-center mt-3">
-                <div>
-                    <button
-                        class="flex flex-col items-center px-3 py-1 font-normal leading-normal text-center no-underline whitespace-no-wrap align-middle select-none play-button"
-                        data-image="https://sntolo.com/wp-content/uploads/2023/08/6-Presagios.webp"
-                        data-text="| 4 | Presagios |"
-                        data-audio-src="https://sntolo.com/wp-content/uploads/2023/08/4.Presagio-V2.mp3"
-                        style="font-size: initial">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/playButton.webp"
-                            class="h-auto max-w-full" alt="Play Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap" >Reproducir</p>
-                    </button>
-                </div>
-                <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/separator2.webp"
-                    class="h-auto max-w-full mx-2 max-h-20" alt="Separator">
-                <div>
-                    <button style="font-size: initial"
-                        class="flex flex-col items-center px-3 py-1 font-normal leading-normal text-center no-underline whitespace-no-wrap align-middle select-none download-button"
-                        data-download-src="https://sntolo.com/wp-content/uploads/2023/08/4.Presagio-V2.mp3"
-                        data-download-text="4-Presagios">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/downloadButton.webp"
-                            class="h-auto max-w-full" alt="Download Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap">Descargar</p>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Separador Column 8 -->
-        <div class="min-w-fit">
-            <img src="https://sntolo.com/wp-content/uploads/2023/07/Recurso-17.webp"
-                class="max-h-96" alt="Image2">
-        </div>
-        <!-- Column 9 -->
-        <div class="flex flex-col items-center justify-center">
-            <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/5-Pork.webp" class="img-fluid max-h-36"
-                alt="Image9">
-            <p class="mt-3 mb-0 text-xl whitespace-no-wrap">| 5 | Pork |</p>
-            <div class="flex items-center justify-center mt-3">
-                <div>
-                    <button
-                        class="flex flex-col items-center px-3 py-1 font-normal leading-normal text-center no-underline whitespace-no-wrap align-middle select-none play-button"
-                        data-image="https://sntolo.com/wp-content/uploads/2023/08/5-Pork.webp" data-text="| 5 | Pork |"
-                        data-audio-src="https://sntolo.com/wp-content/uploads/2023/08/5.Pork-V2.mp3"
-                        style="font-size: initial">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/playButton.webp"
-                            class="h-auto max-w-full" alt="Play Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap" >Reproducir</p>
-                    </button>
-                </div>
-                <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/separator2.webp"
-                    class="h-auto max-w-full mx-2 max-h-20" alt="Separator">
-                <div>
-                    <button style="font-size: initial"
-                        class="flex flex-col items-center px-3 py-1 font-normal leading-normal text-center no-underline whitespace-no-wrap align-middle select-none download-button"
-                        data-download-src="https://sntolo.com/wp-content/uploads/2023/08/5.Pork-V2.mp3"
-                        data-download-text="5-Pork">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/downloadButton.webp"
-                            class="h-auto max-w-full" alt="Download Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap">Descargar</p>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Separador Column 10 -->
-        <div class="min-w-fit">
-            <img src="https://sntolo.com/wp-content/uploads/2023/07/Recurso-17.webp"
-                class="max-h-96" alt="Image2">
-        </div>
-        <!-- Column 11 -->
-        <div class="flex flex-col items-center justify-center">
-            <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/4-Momo.webp" class="img-fluid max-h-36"
-                alt="Image5">
-            <p class="mt-3 mb-0 text-xl whitespace-no-wrap">| 6 | Momo |</p>
-            <div class="flex items-center justify-center mt-3">
-                <div>
-                    <button
-                        class="flex flex-col items-center px-3 py-1 font-normal leading-normal text-center no-underline whitespace-no-wrap align-middle select-none play-button"
-                        data-image="https://sntolo.com/wp-content/uploads/2023/08/4-Momo.webp" data-text="| 6 | Momo |"
-                        data-audio-src="https://sntolo.com/wp-content/uploads/2023/08/6.Momo-V2.mp3"
-                        style="font-size: initial">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/playButton.webp"
-                            class="h-auto max-w-full" alt="Play Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap" >Reproducir</p>
-                    </button>
-                </div>
-                <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/separator2.webp"
-                    class="h-auto max-w-full mx-2 max-h-20" alt="Separator">
-                <div>
-                    <button style="font-size: initial"
-                        class="flex flex-col items-center px-3 py-1 font-normal leading-normal text-center no-underline whitespace-no-wrap align-middle select-none download-button"
-                        data-download-src="https://sntolo.com/wp-content/uploads/2023/08/6.Momo-V2.mp3"
-                        data-download-text="3-Momo">
-                        <img decoding="async" src="https://sntolo.com/wp-content/uploads/2023/08/downloadButton.webp"
-                            class="h-auto max-w-full" alt="Download Button">
-                        <p class="mt-1 mb-0 text-yellow-500 whitespace-no-wrap">Descargar</p>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Fixed bottom player -->
+<div id="playerId" class="player-bar" hidden>
+	<div class="player-head">
+		<img src="" class="player-img" alt="" id="playerImage" width="96" height="96" />
+		<h3 class="mb-0 mt-0 text-[var(--color-primary)] text-xl md:text-2xl">
+			<span id="playerTitle"></span>
+		</h3>
+		<button type="button" class="close-button" id="closeButton" aria-label="Cerrar reproductor">
+			X
+		</button>
+	</div>
+	<audio id="sntoloAudio" class="sntolo-audio" controls preload="none">
+		<source src="" type="audio/mpeg" />
+		Tu navegador no soporta audio HTML5.
+	</audio>
 </div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const playerBar = document.getElementById("playerId")
+		const playerImage = document.getElementById("playerImage") as HTMLImageElement | null
+		const playerTitle = document.getElementById("playerTitle")
+		const audio = document.getElementById("sntoloAudio") as HTMLAudioElement | null
+		const closeButton = document.getElementById("closeButton")
+
+		document.querySelectorAll(".play-button").forEach((button) => {
+			button.addEventListener("click", () => {
+				const el = button as HTMLElement
+				const audioSrc = el.getAttribute("data-audio-src")
+				const imageSrc = el.getAttribute("data-image")
+				const text = el.getAttribute("data-text")
+
+				if (!playerBar || !audio || !playerImage || !playerTitle || !audioSrc) return
+
+				playerBar.hidden = false
+				playerImage.src = imageSrc || ""
+				playerTitle.textContent = text || ""
+
+				const source = audio.querySelector("source")
+				if (source) {
+					source.src = audioSrc
+					audio.load()
+					audio.play().catch(() => {
+						/* autoplay may be blocked until user gesture — click is a gesture */
+					})
+				}
+			})
+		})
+
+		closeButton?.addEventListener("click", () => {
+			if (!playerBar || !audio) return
+			audio.pause()
+			playerBar.hidden = true
+		})
+
+		document.querySelectorAll(".download-button").forEach((button) => {
+			button.addEventListener("click", () => {
+				const el = button as HTMLElement
+				const downloadSrc = el.getAttribute("data-download-src")
+				const downloadText = el.getAttribute("data-download-text") || "track"
+				if (!downloadSrc) return
+
+				const link = document.createElement("a")
+				link.href = downloadSrc
+				link.download = downloadText
+				link.target = "_blank"
+				link.rel = "noopener"
+				link.click()
+			})
+		})
+	})
+</script>

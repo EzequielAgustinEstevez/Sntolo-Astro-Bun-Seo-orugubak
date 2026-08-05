@@ -1,0 +1,77 @@
+---
+import { photoCollage, ui } from "@util/siteData"
+
+const firstRow = photoCollage.filter((p) =>
+	["div1", "div2", "div3", "div4"].includes(p.slot)
+)
+const zarine = photoCollage.find((p) => p.alt === "Zarine")
+const secondRow = photoCollage.filter((p) => ["div5", "div6"].includes(p.slot))
+const sntolo = photoCollage.find((p) => p.alt === "Sntolo")
+
+const slotClass: Record<string, string> = {
+	div1: "photo-div1",
+	div2: "photo-div2",
+	div3: "photo-div3",
+	div4: "photo-div4",
+	div5: "photo-div5",
+	div6: "photo-div6"
+}
+---
+
+<section
+	id="fotos"
+	class="image-background py-16"
+	style={`--bg-fonts: url('${ui.backgroundFonts}')`}
+>
+	<div class="container mx-auto px-4 max-w-3xl">
+		<h1 class="display-title text-white text-4xl md:text-6xl mb-[17vh] overflow-hidden">
+			A Ella Se Le Vincula La Belleza De Este Infierno...
+		</h1>
+	</div>
+
+	<div class="container mx-auto px-4">
+		<div class="photo-parent">
+			{
+				firstRow.map((item) => (
+					<div class={slotClass[item.slot]}>
+						<a href={item.href}>
+							<img src={item.src} alt={item.alt} class="w-full h-auto" />
+						</a>
+					</div>
+				))
+			}
+		</div>
+
+		{
+			zarine && (
+				<div class="photo-center">
+					<a href={zarine.href}>
+						<img src={zarine.src} alt={zarine.alt} class="w-full h-auto max-w-xl" />
+					</a>
+				</div>
+			)
+		}
+
+		<div class="photo-parent">
+			{
+				secondRow.map((item) => (
+					<div class={slotClass[item.slot]}>
+						<a href={item.href}>
+							<img src={item.src} alt={item.alt} class="w-full h-auto" />
+						</a>
+					</div>
+				))
+			}
+		</div>
+
+		{
+			sntolo && (
+				<div class="photo-center">
+					<a href={sntolo.href}>
+						<img src={sntolo.src} alt={sntolo.alt} class="w-full h-auto max-w-xl" />
+					</a>
+				</div>
+			)
+		}
+	</div>
+</section>
