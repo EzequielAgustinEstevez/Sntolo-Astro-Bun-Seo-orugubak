@@ -9,6 +9,8 @@ import { manifest, seoConfig } from "./utils/seoConfig"
 /**
  * `astro-compress` pulls in `sharp` at import time.
  * Only load it for production builds to avoid breaking `astro dev`.
+ * CSS compression is disabled: it was stripping all `@media` rules
+ * (responsive Tailwind `md:`/`lg:` classes), so Vercel looked different from local.
  */
 async function loadCompressIntegration(): Promise<AstroIntegration[]> {
 	const command = process.argv.find((arg) =>
@@ -21,7 +23,15 @@ async function loadCompressIntegration(): Promise<AstroIntegration[]> {
 
 	try {
 		const { default: compress } = await import("astro-compress")
-		return [compress()]
+		return [
+			compress({
+				CSS: false,
+				HTML: true,
+				Image: true,
+				JavaScript: true,
+				SVG: true
+			})
+		]
 	} catch (error) {
 		const message = error instanceof Error ? error.message : String(error)
 		console.warn(
