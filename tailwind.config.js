@@ -1,7 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require("tailwindcss/defaultTheme")
-
-module.exports = {
+export default {
 	content: ["./src/**/*.{astro,html,jsx,tsx,svelte,vue,js,ts}"],
 	theme: {
 		extend: {
@@ -14,7 +12,7 @@ module.exports = {
 				black: "#000000"
 			},
 			fontFamily: {
-				sans: ["GrenzeGotisch", ...defaultTheme.fontFamily.serif],
+				sans: ["GrenzeGotisch", "ui-serif", "Georgia", "serif"],
 				display: ["Cristone", "sans-serif"],
 				augusta: ["Augusta", "serif"]
 			}
