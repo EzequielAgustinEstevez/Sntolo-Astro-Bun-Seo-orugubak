@@ -1,3 +1,6 @@
+packages:
+  - "."
+
 # pnpm project settings (v11+ reads these from here, not .npmrc / package.json#pnpm)
 shamefullyHoist: true
 autoInstallPeers: true
@@ -10,6 +13,6 @@ allowBuilds:
   sharp: true
 
 minimumReleaseAgeExclude:
-  - '@playform/pipe@0.1.6'
+  - "@playform/pipe@0.1.6"
   - astro-compress@2.4.2
   - terser@5.49.2
