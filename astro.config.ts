@@ -1,19 +1,14 @@
 import { defineConfig } from "astro/config"
 import type { AstroIntegration } from "astro"
-
-// Astro integration imports
-import tailwind from "@astrojs/tailwind"
 import sitemap from "@astrojs/sitemap"
+import tailwindcss from "@tailwindcss/vite"
 import { VitePWA } from "vite-plugin-pwa"
 
-// Helper imports
 import { manifest, seoConfig } from "./utils/seoConfig"
 
 /**
- * `astro-compress` pulls in `sharp` (native bindings) at import time.
- * Loading it during `astro dev` / `preview` blocks the whole config if the
- * platform binary is missing or was installed for another OS/arch.
- * Compression only matters for production builds, so we load it then.
+ * `astro-compress` pulls in `sharp` at import time.
+ * Only load it for production builds to avoid breaking `astro dev`.
  */
 async function loadCompressIntegration(): Promise<AstroIntegration[]> {
 	const command = process.argv.find((arg) =>
@@ -31,7 +26,7 @@ async function loadCompressIntegration(): Promise<AstroIntegration[]> {
 		const message = error instanceof Error ? error.message : String(error)
 		console.warn(
 			"[astro.config] Skipping astro-compress — sharp failed to load.\n" +
-				"  Rebuild for this OS/arch: pnpm rebuild sharp  (or: npm rebuild sharp)\n" +
+				"  Rebuild for this OS/arch: pnpm rebuild sharp\n" +
 				`  Details: ${message.split("\n")[0]}`
 		)
 		return []
@@ -40,18 +35,10 @@ async function loadCompressIntegration(): Promise<AstroIntegration[]> {
 
 export default defineConfig({
 	site: seoConfig.baseURL,
-	integrations: [
-		tailwind({
-			config: {
-				applyBaseStyles: false,
-				path: "./tailwind.config.js"
-			}
-		}),
-		sitemap(),
-		...(await loadCompressIntegration())
-	],
+	integrations: [sitemap(), ...(await loadCompressIntegration())],
 	vite: {
 		plugins: [
+			tailwindcss(),
 			VitePWA({
 				registerType: "autoUpdate",
 				manifest,
@@ -60,8 +47,6 @@ export default defineConfig({
 					globPatterns: [
 						"**/*.{js,css,svg,png,jpg,jpeg,gif,webp,woff,woff2,ttf,eot,ico}"
 					],
-					// Don't fallback on document based (e.g. `/some-page`) requests
-					// This removes an errant console.log message from showing up.
 					navigateFallback: null
 				}
 			})

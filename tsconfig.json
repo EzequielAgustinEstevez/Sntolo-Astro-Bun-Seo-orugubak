@@ -1,11 +1,6 @@
 {
+	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
-		"target": "ESNext",
-		"module": "ESNext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"types": ["astro/client"],
 		"baseUrl": ".",
 		"paths": {
 			"@globals": ["src/components/global"],
@@ -17,5 +12,7 @@
 			"@svg/*": ["src/assets/svg/*"],
 			"@icon/*": ["src/assets/svg/icon/*"]
 		}
-	}
+	},
+	"include": ["src/**/*", "utils/**/*", "astro.config.ts"],
+	"exclude": ["dist", "node_modules"]
 }
